@@ -133,6 +133,8 @@ source <name_of_your_virtualenv>/bin/activate
 
 You should now see (*<name_of_your_virtualenv>*) appearing in front of the command prompt.
 
+3.5. Install the necessary dependencies from requirements.txt to the new venv.
+
 4. Install eis_toolkit by running
 
 ```console

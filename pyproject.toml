@@ -30,6 +30,7 @@ packaging = "^21.3"
 keras = "^2.9.0"
 tensorflow = "^2.9.1"
 mkdocs-material = "^8.4.0"
+testresources = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
 jupyterlab = "^3.4.5"
