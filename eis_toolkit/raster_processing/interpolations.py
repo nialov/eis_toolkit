@@ -5,9 +5,11 @@ import os
 import pandas as pd
 import rasterio
 
+from eis_toolkit.exceptions import InvalidParameterValueException
+
 def idw(
-    row: np.float64,
-    column: np.float64,
+    x: np.float64,
+    y: np.float64,
     values: List[pd.core.series.Series],
     rows: List[pd.core.series.Series],
     columns: List[pd.core.series.Series],
@@ -19,8 +21,8 @@ def idw(
     results[:, 1] = columns
     results[:, 2] = values
 
-    # weight = 1 / (d(x, x_i)^power + 1)
-    results[:, 3] = 1 / (np.sqrt((results[:, 0] - row)**2 + (results[:, 1] - column)**2)**power + 1)
+    # weight = 1 / (d(x, y)^power + 1)
+    results[:, 3] = 1 / (np.sqrt((results[:, 0] - x)**2 + (results[:, 1] - y)**2)**power + 1)
 
     # Multiplicative product of inverse distant weight and actual value.
     results[:, 4] = results[:, 2] * results[:, 3]
@@ -55,8 +57,8 @@ def _data_frame_to_idw_raster(
                 x, y = rasterio.transform.xy(raster_transform, row, column)
 
                 value = idw(
-                            row = x,
-                            column = y,
+                            x = x,
+                            y = y,
                             values = values,
                             rows = data_frame['x'],
                             columns = data_frame['y'],
