@@ -14,16 +14,7 @@ raster_path_multi = parent_dir.joinpath("../data/remote/small_raster_multiband.t
 raster_path_nonsquared = parent_dir.joinpath("../data/remote/nonsquared_pixelsize_raster.tif")
 
 ASPECT_CLASSIFICATION_RESULTS = {
-    8: {
-        1: 179,
-        2: 423,
-        3: 206,
-        4: 182,
-        5: 215,
-        6: 483,
-        7: 325,
-        8: 563,
-    },
+    8: {1: 179, 2: 423, 3: 206, 4: 182, 5: 215, 6: 483, 7: 325, 8: 563},
     16: {
         1: 74,
         2: 83,

@@ -17,18 +17,9 @@ raster_path_multi = parent_dir.joinpath("../data/remote/small_raster_multiband.t
 raster_path_nonsquared = parent_dir.joinpath("../data/remote/nonsquared_pixelsize_raster.tif")
 
 SECOND_ORDER_BASIC_SET_RESULTS = {
-    "Evans": {
-        "planc": 0.017252,
-        "profc": 0.000793,
-    },
-    "Young": {
-        "planc": 0.018364,
-        "profc": 0.001461,
-    },
-    "Zevenbergen": {
-        "planc": 0.012064,
-        "profc": 0.000763,
-    },
+    "Evans": {"planc": 0.017252, "profc": 0.000793},
+    "Young": {"planc": 0.018364, "profc": 0.001461},
+    "Zevenbergen": {"planc": 0.012064, "profc": 0.000763},
 }
 
 
