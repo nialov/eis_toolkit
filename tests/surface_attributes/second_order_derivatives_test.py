@@ -1,12 +1,13 @@
-import numpy as np
-import rasterio
-import pytest
 from pathlib import Path
 
+import numpy as np
+import pytest
+import rasterio
+
 from eis_toolkit.exceptions import (
+    InvalidParameterValueException,
     InvalidRasterBandException,
     NonSquarePixelSizeException,
-    InvalidParameterValueException,
 )
 from eis_toolkit.surface_attributes.parameters import first_order, second_order_basic_set
 
@@ -33,6 +34,7 @@ SECOND_ORDER_BASIC_SET_RESULTS = {
 
 @pytest.mark.parametrize("method", ["Evans", "Young", "Zevenbergen"])
 def test_second_order_basic_set(method: str):
+    """Test for second order derivatives."""
     with rasterio.open(raster_path_single) as raster:
         # There may be some parameters resulting in zero-pixels,
         # which may influence the test for the slope_tolerance, resulting in an assertion error.
@@ -82,6 +84,7 @@ def test_second_order_basic_set(method: str):
 
 
 def test_number_bands():
+    """Test raising error if multiband raster."""
     with rasterio.open(raster_path_multi) as raster:
         parameters = ["planc"]
         with pytest.raises(InvalidRasterBandException):
@@ -89,6 +92,7 @@ def test_number_bands():
 
 
 def test_nonsquared_pixelsize():
+    """Test raising error if pixels are not square-sized."""
     with rasterio.open(raster_path_nonsquared) as raster:
         parameters = ["planc"]
         with pytest.raises(NonSquarePixelSizeException):
@@ -96,6 +100,7 @@ def test_nonsquared_pixelsize():
 
 
 def test_scaling():
+    """Test raising error if wrong scaling factor provided."""
     with rasterio.open(raster_path_single) as raster:
         parameters = ["planc"]
         with pytest.raises(InvalidParameterValueException):

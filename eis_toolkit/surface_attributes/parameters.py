@@ -77,7 +77,7 @@ def first_order(
     slope_direction_unit: Literal["degrees", "radians"] = "radians",
     method: Literal["Horn", "Evans", "Young", "Zevenbergen"] = "Horn",
 ) -> dict:
-    """Calculates the first order surface attributes.
+    """Calculate first order surface attributes.
 
     For compatibility for slope and aspect calculations with ArcGIS or QGIS, choose Method Horn (1981).
 
@@ -158,7 +158,7 @@ def second_order_basic_set(
     slope_tolerance: Optional[Number] = 0,
     method: Literal["Evans", "Young", "Zevenbergen"] = "Young",
 ) -> dict:
-    """Calculates the second order surface attributes.
+    """Calculat second order surface attributes.
 
     References:
     Young, M., 1978: Terrain analysis program documentation. Report 5 on Grant DA-ERO-591-73-G0040,
