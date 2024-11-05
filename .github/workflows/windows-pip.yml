@@ -25,14 +25,13 @@ jobs:
           post-cleanup: "all"
           create-args: >-
             python=${{ matrix.python-version }}
-      - name: Print pip environment
+      - name: Install eis_toolkit with pip
         run: |
-          python3 --version
-          python3 -m pip list
+          micromamba run -n eis_toolkit python3 -m pip install .
 
       - name: Run unit tests
         run: |
           # Test package import
-          python3 -c 'import eis_toolkit'
+          micromamba run -n eis_toolkit python3 -c 'import eis_toolkit'
           # Run unittests with pytest
-          python3 -m pytest -v
+          micromamba run -n eis_toolkit python3 -m pytest -v
