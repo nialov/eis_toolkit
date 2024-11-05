@@ -27,12 +27,12 @@ jobs:
             python=${{ matrix.python-version }}
       - name: Print pip environment
         run: |
-          python${{ matrix.python-version }} --version
-          python${{ matrix.python-version }} -m pip list
+          micromamba run -n eis_toolkit python${{ matrix.python-version }} --version
+          micromamba run -n eis_toolkit python${{ matrix.python-version }} -m pip list
 
       - name: Run unit tests
         run: |
           # Test package import
-          python${{ matrix.python-version }} -c 'import eis_toolkit'
+          micromamba run -n eis_toolkit python${{ matrix.python-version }} -c 'import eis_toolkit'
           # Run unittests with pytest
-          python${{ matrix.python-version }} -m pytest -v
+          micromamba run -n eis_toolkit python${{ matrix.python-version }} -m pytest -v
