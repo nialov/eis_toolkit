@@ -25,11 +25,8 @@ jobs:
           post-cleanup: "all"
           create-args: >-
             python=${{ matrix.python-version }}
-      - name: Print conda environment
+      - name: Print pip environment
         run: |
-          # Print environment
-          conda info
-          conda list
           python${{ matrix.python-version }} --version
           python${{ matrix.python-version }} -m pip list
 
