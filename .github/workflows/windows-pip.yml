@@ -30,10 +30,12 @@ jobs:
           # Print environment
           conda info
           conda list
-          python --version
+          python${{ matrix.python-version }} --version
+          python${{ matrix.python-version }} -m pip list
+
       - name: Run unit tests
         run: |
           # Test package import
-          python -c 'import eis_toolkit'
+          python${{ matrix.python-version }} -c 'import eis_toolkit'
           # Run unittests with pytest
-          python -m pytest -v
+          python${{ matrix.python-version }} -m pytest -v
