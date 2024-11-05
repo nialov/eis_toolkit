@@ -36,4 +36,4 @@ jobs:
           # Test package import
           python -c 'import eis_toolkit'
           # Run unittests with pytest
-          pytest -v
+          python -m pytest -v
